@@ -187,7 +187,7 @@ function! s:FSGetAlternateFilename(filepath, filename, newextension, location, m
                     if a:mustmatch == 1 && match(a:filepath, part1) == -1
                         let path = ""
                     else
-                        let path = substitute(a:filepath, part1, part2, flags) . s:os_slash .
+                        let path = substitute(a:filepath, '.*\zs' . part1, part2, flags) . s:os_slash .
                                     \ a:filename . '.' . a:newextension
                     endif
                 elseif cmd == 'ifrel'
